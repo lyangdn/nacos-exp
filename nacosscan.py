@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 # @Time    : 2023/4/26 18:44
-# @Author  : Lyang
+# @Author  : Lyangdn
 # @FileName: nacosscan.py
 # @Software: PyCharm
 
@@ -38,10 +38,8 @@ with open('url.txt') as f:
             'Te': 'trailers',
             'Connection': 'close',
             'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZXhwIjoiMTY4MjU5MjQwMSJ9.TTXQUb2WtLMJ2L3OI705zVlu0dbpNgeZ32i9JQtQUOc'
-            # Replace with appropriate authorization token
         }
 
-        # Define data for this url
         data = {
             'username': 'nacos',
             'password': 'nacos'
