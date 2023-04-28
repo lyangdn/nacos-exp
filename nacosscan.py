@@ -24,7 +24,7 @@ with open('url.txt') as f:
         pathall = parsed_urlall.path
         # Define headers for this url
         headers = {
-            'Host': f'{hostname}',  # Replace with appropriate host
+            'Host': f'{hostname}', 
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0',
             'Accept': 'application/json, text/plain, */*',
             'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
@@ -37,6 +37,7 @@ with open('url.txt') as f:
             'Sec-Fetch-Site': 'same-origin',
             'Te': 'trailers',
             'Connection': 'close',
+            #请修改以下JWT，'Authorization': 'Bearer 后为JWT构造的语句
             'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZXhwIjoiMTY4MjU5MjQwMSJ9.TTXQUb2WtLMJ2L3OI705zVlu0dbpNgeZ32i9JQtQUOc'
         }
 
