@@ -1,0 +1,4 @@
+http://m.ideasitl.cn:8848
+http://nacos.cs.ideas-sys.com:8848
+http://posdata.ideasintl.cn:8848
+http://posdataapi.ideasintl.cn:8848
